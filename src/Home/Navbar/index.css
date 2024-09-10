@@ -1,0 +1,37 @@
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 40px;
+    align-items: center;
+    height: 9vh;
+}
+.navbarList {
+    font-family: Roboto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+li {
+    list-style-type: none;
+}   
+.logoutBtn {
+    font-size: 16px;
+    padding: 6px 16px;
+    background-color: #fff;
+    color: #3b82f6;
+    border: 2px solid #3b82f6;
+    border-radius: 3px;
+}
+
+.poffile {
+    width: 32px;
+    height: 32px;
+}
+.logoNavbar {
+    width: 100px;
+}
+.logoutBtn {
+    font-size: 16px;
+    padding: 6px 10px;
+}
