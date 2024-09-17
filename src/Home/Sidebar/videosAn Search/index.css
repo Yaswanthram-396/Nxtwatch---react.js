@@ -105,3 +105,10 @@
   .entireVideos{
     padding: 30px;
   }
+  .loader-container{
+    margin:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+  }
