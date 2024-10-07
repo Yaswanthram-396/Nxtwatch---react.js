@@ -1,28 +1,27 @@
 import "./index.css";
-import { FaHome, FaGamepad, FaFire, FaSave } from "react-icons/fa";
+import { FaHome, FaGamepad, FaFire } from "react-icons/fa";
 import { MdVideoLibrary } from "react-icons/md";
-import VideosInHome from "./sidebarSideContent";
-function SidePanel(props) {
+import { Link } from "react-router-dom";
+function SidePanel({ Num }) {
   return (
     <div className="contentWithPanel">
       <div className="sidePanel">
         <div className="sidePanelOptionsContainer">
           <div className="sidePanelOptions hoverOnOptions">
-            {/* <img src={FaHome} alt="logo" className="poffileInsidepanel" /> */}
-            <FaHome title="Moon Icon" />
-            <a href="/NxtWatch/Home" className="sidePanelLink">
-              {" "}
-              Home
-            </a>
+            <FaHome title="Home Icon" />
+            <Link to="/NxtWatch/Home">
+            <a href="/NxtWatch/Home" className="sidePanelLink">Home</a></Link>
           </div>
+          <Link to="/NxtWatch/Trending">
+            <div className="sidePanelOptions">
+              <FaFire title="Trending Icon" />
+              <a href="/NxtWatch/Trending" className="sidePanelLink">
+                Trending
+              </a>
+            </div>
+          </Link>
           <div className="sidePanelOptions">
-            <FaFire title="Trending Icon" />
-            <a href="/NxtWatch/Trending" className="sidePanelLink">
-              Trending
-            </a>
-          </div>
-          <div className="sidePanelOptions">
-            <FaGamepad title="Games Icon" />
+            <FaGamepad title="Gaming Icon" />
             <a href="/NxtWatch/Gaming" className="sidePanelLink">
               Gaming
             </a>
@@ -56,8 +55,9 @@ function SidePanel(props) {
           <p>Enjoy! Now to see your channels and recommendations!</p>
         </div>
       </div>
-      <VideosInHome />
+      {Num}
     </div>
   );
 }
+
 export default SidePanel;

@@ -7,7 +7,7 @@
 .BG-container {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    
     height: 360px;
     background-color: transparent;
     padding: 20px;
@@ -15,24 +15,24 @@
     text-decoration: none;
     transition: 0.3s ease-out;
 }
-    .outer {
-        display: flex;
-        align-items: flex-start;
+.outer {
+    display: flex;
+    align-items: flex-start;
         /* justify-content: flex-start; */
         width: 100%;
         padding-top: 10px;
     }
     .heading{
         font-size: 18px;
-    font-weight: 600;
-    color: rgb(120, 124, 120);
-    margin-bottom: 10px;
-    cursor: pointer;
-
+        font-weight: 600;
+        color: rgb(120, 124, 120);
+        margin-bottom: 10px;
+        cursor: pointer;
+        
     }
     .paragraphInThumb{
         color: rgb(147, 147, 145);
-    margin-bottom: 10px;
+        margin-bottom: 10px;
     font-size: 12px;
     }
    
@@ -52,8 +52,12 @@
         cursor: pointer;
     }
     .Videos{
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        @media (max-width:770px) {
+            grid-template-columns: auto;
+            
+        }
     }
 
 .search{
@@ -81,6 +85,10 @@
     border-color: rgb(214, 215, 211);
     outline-width: 0px;
     border-radius: 4px;
+    @media (max-width:770px){
+        width: 95%;
+        
+    }
 }
 .submitdiv{
     margin: auto;
@@ -103,7 +111,8 @@
     background: transparent; /* Make scrollbar invisible */
   }
   .entireVideos{
-    padding: 30px;
+    padding: 20px;
+
   }
   .loader-container{
     margin:auto;
@@ -112,3 +121,9 @@
     justify-content: center;
     height: 50%;
   }
+  .media {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    margin-right: 6%;
+}
