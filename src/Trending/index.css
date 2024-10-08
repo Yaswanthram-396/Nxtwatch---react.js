@@ -1,0 +1,58 @@
+.BG-container-2 {
+    display: flex;
+    gap: 24px;
+}
+.ghnj {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 92%;
+    padding: 40px;
+}    .trendingImg {
+        color: red;
+        font-size: 40px;
+    }
+    .iconback {
+        /* width: 100%; */
+        /* height: 14vh; */
+        /* width: 100%; */
+        /* height: 150px; */
+        /* background-color: rgb(241, 241, 241); */
+        /* display: flex; */
+        /* padding: 20px 20px 20px 45px; */
+        background-color: #fff;
+        background-color: rgb(224, 233, 240);
+        padding: 30px;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        margin-right: 30px;
+    }
+    .tendingIcon {
+        padding-top: 15px;
+        width: 94%;
+        height: 150px;
+        background-color: rgb(241, 241, 241);
+        display: flex;
+        padding: 20px 20px 20px 45px;
+        align-items: center;
+    }
+    .trendingVIdeos{
+        width: 80%;
+        height: 92vh;
+        overflow-y: scroll;
+        scrollbar-width: none;
+    }
+    .changeHead{
+        font-size: 32px !important;
+    }
+    .Video_photo{
+width: 35%;
+    }
+    .text-trend{
+        font-size: 40px;
+        font-family: 700;
+    }

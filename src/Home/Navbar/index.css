@@ -18,7 +18,7 @@ li {
 .logoutBtn {
     font-size: 16px;
     padding: 6px 16px;
-    background-color: #fff;
+    background-color:transparent;
     color: #3b82f6;
     border: 2px solid #3b82f6;
     border-radius: 3px;
@@ -35,3 +35,6 @@ li {
     font-size: 16px;
     padding: 6px 10px;
 }
+.num{
+    color: white ; 
+    border: 1px solid white; };

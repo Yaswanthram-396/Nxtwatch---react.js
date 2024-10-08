@@ -4,27 +4,35 @@ import Cookies from "js-cookie";
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import ConfigurationContext from "../../../context";
 
 class GetApiRes extends React.Component {
+  static contextType = ConfigurationContext;
   constructor(props) {
     super(props);
 
     this.state = {
       searchInput: "",
       DataApi: { videos: [] },
-      loading: false, 
+      loading: false,
     };
   }
 
   componentDidMount = async () => {
     await this.fetchData();
   };
+  darkMode = {
+    backgroundColor: "white",
+  };
+  light = {
+    backgroundColor: "black",
+  };
 
   fetchData = async () => {
     const cookieToken = Cookies.get("jwt_token");
     const { searchInput } = this.state;
 
-    this.setState({ loading: true }); 
+    this.setState({ loading: true });
 
     try {
       const response = await fetch(
@@ -42,10 +50,10 @@ class GetApiRes extends React.Component {
       }
 
       const data = await response.json();
-      this.setState({ DataApi: data, loading: false }); 
+      this.setState({ DataApi: data, loading: false });
     } catch (error) {
       console.error("Error fetching data:", error.message);
-      this.setState({ loading: false }); 
+      this.setState({ loading: false });
     }
   };
 
@@ -55,12 +63,12 @@ class GetApiRes extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.fetchData(); }
+    this.fetchData();
+  };
 
   render() {
     const { searchInput, DataApi, loading } = this.state;
     const videosArray = DataApi.videos;
-    // console.log(videosArray);
 
     return (
       <>
@@ -71,12 +79,10 @@ class GetApiRes extends React.Component {
               type="text"
               onChange={this.handleSearchInput}
               value={searchInput}
-              placeholder="Search videos"
+              placeholder="Search"
             />
             <div className="submitdiv" type="submit">
-              <button className="submitOnButton">
-                <FaSearch type="submit" />
-              </button>
+              <FaSearch type="submit" />
             </div>
           </form>
 
@@ -94,32 +100,37 @@ class GetApiRes extends React.Component {
               </div>
             ) : videosArray.length > 0 ? (
               videosArray.map((item) => (
-                // <div className="BG-container" key={item.id}>
-                  // <Link to={`/video/${item.id}`}>
-                    <a className="BG-container" href={`/video/${item.id}`}>
+                <a className="BG-container" href={`/video/${item.id}`}>
+                  <img
+                    src={item.thumbnail_url}
+                    alt="thumbnail_url"
+                    className="thumbnail_url"
+                  />
+                  <div className="outer">
                     <img
-                      src={item.thumbnail_url}
-                      alt="thumbnail_url"
-                      className="thumbnail_url"
+                      src={item.channel.profile_image_url}
+                      className="profile"
+                      alt="profile_image_url"
                     />
-                    <div className="outer">
-                      <img
-                        src={item.channel.profile_image_url}
-                        className="profile"
-                        alt="profile_image_url"
-                      />
-                      <div className="inner">
-                        <h1 className="heading">{item.title}</h1>
-                        <p className="paragraphInThumb">{item.channel.name}</p>
-                        <div className="count paragraphInThumb">
-                          <p>{`${item.view_count} Views`}</p>
-                          <p>{item.published_at}</p>
-                        </div>
+                    <div className="inner">
+                      <h1 className="heading">{item.title}</h1>
+                      <p
+                        style={{ color: "rgb(120,124,120)" }}
+                        className="paragraphInThumb"
+                      >
+                        {item.channel.name}
+                      </p>
+                      <div className="count paragraphInThumb">
+                        <p
+                          style={{ color: "rgb(120,124,120)" }}
+                        >{`${item.view_count} Views`}</p>
+                        <p style={{ color: "rgb(120,124,120)" }}>
+                          {item.published_at}
+                        </p>
                       </div>
                     </div>
-                    </a>
-                  // </Link>
-                // </div>
+                  </div>
+                </a>
               ))
             ) : (
               <p>No videos found</p>

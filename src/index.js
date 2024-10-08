@@ -13,13 +13,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-
+import ConfigurationContext from "./context";
 import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <ConfigurationContext.Provider>
+        <App />
+      </ConfigurationContext.Provider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

@@ -30,11 +30,11 @@
         cursor: pointer;
         
     }
-    .paragraphInThumb{
-        color: rgb(147, 147, 145);
+    .paragraphInThumb {
+        color: #B6C2CA;
         margin-bottom: 10px;
-    font-size: 12px;
-    }
+        font-size: 15px;
+        font-weight: 700;}
    
     .profile {
         width: 12%;
@@ -121,9 +121,3 @@
     justify-content: center;
     height: 50%;
   }
-  .media {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid rgb(204, 204, 204);
-    margin-right: 6%;
-}

@@ -2,39 +2,47 @@ import "./index.css";
 import { FaHome, FaGamepad, FaFire } from "react-icons/fa";
 import { MdVideoLibrary } from "react-icons/md";
 import { Link } from "react-router-dom";
+import ConfigurationContext from "../../context";
+import { useContext } from "react";
 function SidePanel({ Num }) {
+  const { mode } = useContext(ConfigurationContext);
+  const darkMode = {
+    color: "white",
+  };
+  const light = {
+    color: "black",
+  };
   return (
     <div className="contentWithPanel">
       <div className="sidePanel">
         <div className="sidePanelOptionsContainer">
-          <div className="sidePanelOptions hoverOnOptions">
+          <div className="sidePanelOptions">
             <FaHome title="Home Icon" />
             <Link to="/NxtWatch/Home">
-            <a href="/NxtWatch/Home" className="sidePanelLink">Home</a></Link>
+              <p style={mode ? darkMode : light}>Home</p>
+            </Link>
           </div>
           <Link to="/NxtWatch/Trending">
             <div className="sidePanelOptions">
               <FaFire title="Trending Icon" />
-              <a href="/NxtWatch/Trending" className="sidePanelLink">
-                Trending
-              </a>
+              <p style={mode ? darkMode : light}>Trending</p>
             </div>
           </Link>
           <div className="sidePanelOptions">
             <FaGamepad title="Gaming Icon" />
-            <a href="/NxtWatch/Gaming" className="sidePanelLink">
-              Gaming
-            </a>
+            <Link to="/NxtWatch/Gaming">
+              <p style={mode ? darkMode : light}>Gaming</p>
+            </Link>
           </div>
           <div className="sidePanelOptions">
             <MdVideoLibrary title="Saved Videos Icon" />
-            <a href="/NxtWatch/Saved" className="sidePanelLink">
-              Saved videos
-            </a>
+            <Link to="/NxtWatch/Saved">
+              <p style={mode ? darkMode : light}> Saved videos</p>
+            </Link>
           </div>
         </div>
         <div className="sidePanelFooter">
-          <h1 className="contact">CONTACT US</h1>
+          <h2 style={mode ? darkMode : light}>CONTACT US</h2>
           <div className="iconsContainer">
             <img
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
@@ -52,7 +60,9 @@ function SidePanel({ Num }) {
               className="icon"
             />
           </div>
-          <p>Enjoy! Now to see your channels and recommendations!</p>
+          <p style={mode ? darkMode : light}>
+            Enjoy! Now to see your channels and recommendations!
+          </p>
         </div>
       </div>
       {Num}

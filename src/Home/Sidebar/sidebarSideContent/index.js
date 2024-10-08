@@ -1,13 +1,20 @@
 import React from "react";
 import "./index.css";
 import { FaTimes } from "react-icons/fa";
-import GetApiRes from "../videosAn Search";
+import GetApiRes from "../videosAnSearch";
+import ConfigurationContext from "../../../context";
 class VideosInHome extends React.Component {
+  static contextType = ConfigurationContext;
   constructor(props) {
     super(props);
     this.state = { banner: true };
   }
-
+  darkMode = {
+    backgroundColor: "white",
+  };
+  light = {
+    backgroundColor: "black",
+  };
   handleCloseBanner = () => {
     const { banner } = this.state;
     this.setState({ banner: !banner });
@@ -15,7 +22,10 @@ class VideosInHome extends React.Component {
   render() {
     const { banner } = this.state;
     return (
-      <div className="sidebarSideContent">
+      <div
+        className="sidebarSideContent"
+        style={!this.context.mode ? this.darkMode : this.light}
+      >
         <div
           className="SideContentbanner"
           style={{ display: banner ? "block" : "none" }}

@@ -57,14 +57,12 @@
 
   .ViewCount {
     display: flex;
-    width: 20%;
     gap: 20px;
 }
 .Liked {
   display: flex;
   align-items: center;
   gap: 24px;
-  width: 28%;
 }
 .media {
   display: flex;

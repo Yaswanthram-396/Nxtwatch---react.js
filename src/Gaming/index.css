@@ -1,0 +1,28 @@
+.game-Video_photo {
+    width: 100%;
+    height: 100%;
+}
+.BG-container-gaming {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: 100%; */
+    background-color: transparent;
+    padding: 20px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    transition: 0.3s ease-out;
+}
+.gaming-video {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /* gap: 20px; */
+    background-color: #FAF9F7;
+    /* padding: 20px; */
+}
+.inner p {
+    font-size: 16px;
+}
+.BG-container-gaming h1 {
+    color: #000;
+}
