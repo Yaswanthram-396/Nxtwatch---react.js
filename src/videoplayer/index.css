@@ -68,7 +68,7 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid rgb(204, 204, 204);
-  margin-right: 6%;
+  /* margin-right: 6%; */
 }
 .para{
   color: rgb(148, 163, 184);
@@ -106,4 +106,6 @@ font-weight: 600;
 .totalVideo {
   margin: 0px auto;
   width: 69%;
+  height: 91vh;
+  
 }

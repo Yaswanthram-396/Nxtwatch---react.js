@@ -9,11 +9,11 @@
 }
 .sidePanel {
     width: 20%;
-    /* margin-top: 5%; */
+    padding-top: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 91vh;
+    /* min-height: 91vh; */
 }
 .hoverOnOptions{
 background-color: rgb(226, 232, 240)
@@ -56,4 +56,30 @@ padding: 13px;
 }
 body{
     margin: 0px;
+}
+.Clicked{
+background-color: rgb(56,56,56)
+}
+.lightClick{
+    background-color: #E2E8F0;
+}
+.iconStyle{
+    color:red;
+}
+.whiteIcon{
+    color: #fff;
+}
+.DarkIcon{
+    color:#000;
+}
+.retry{
+    padding: 13px 26px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: rgb(79, 70, 229);
+    border: 0px;
+    border-radius: 5px;
+
 }

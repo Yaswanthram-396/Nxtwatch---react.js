@@ -14,7 +14,7 @@ class GetApiRes extends React.Component {
     this.state = {
       searchInput: "",
       DataApi: { videos: [] },
-      loading: false,
+      loading: true,
     };
   }
 
@@ -81,61 +81,85 @@ class GetApiRes extends React.Component {
               value={searchInput}
               placeholder="Search"
             />
-            <div className="submitdiv" type="submit">
+            <div
+              className="submitdiv"
+              type="submit"
+              onClick={this.handleSubmit}
+            >
               <FaSearch type="submit" />
             </div>
           </form>
 
-          <div className="Videos">
-            {loading ? (
-              <div className="loader-container" data-testid="loader">
-                <ThreeDots
-                  height="80"
-                  width="80"
-                  radius="9"
-                  color="blue"
-                  ariaLabel="three-dots-loading"
-                  visible={true}
-                />
-              </div>
-            ) : videosArray.length > 0 ? (
-              videosArray.map((item) => (
-                <a className="BG-container" href={`/video/${item.id}`}>
-                  <img
-                    src={item.thumbnail_url}
-                    alt="thumbnail_url"
-                    className="thumbnail_url"
-                  />
-                  <div className="outer">
+          {loading ? (
+            <div className="loader-container" data-testid="loader">
+              <ThreeDots
+                height="80"
+                width="80"
+                radius="9"
+                color="blue"
+                ariaLabel="three-dots-loading"
+                visible={true}
+              />
+            </div>
+          ) : videosArray.length > 0 ? (
+            <div className="Videos">
+              {videosArray.map((item) => (
+                <Link to={`/video/${item.id}`}>
+                  <div className="BG-container">
                     <img
-                      src={item.channel.profile_image_url}
-                      className="profile"
-                      alt="profile_image_url"
+                      src={item.thumbnail_url}
+                      alt="thumbnail_url"
+                      className="thumbnail_url"
                     />
-                    <div className="inner">
-                      <h1 className="heading">{item.title}</h1>
-                      <p
-                        style={{ color: "rgb(120,124,120)" }}
-                        className="paragraphInThumb"
-                      >
-                        {item.channel.name}
-                      </p>
-                      <div className="count paragraphInThumb">
+                    <div className="outer">
+                      <img
+                        src={item.channel.profile_image_url}
+                        className="profile"
+                        alt="profile_image_url"
+                      />
+                      <div className="inner">
+                        <h1 className="heading">{item.title}</h1>
                         <p
                           style={{ color: "rgb(120,124,120)" }}
-                        >{`${item.view_count} Views`}</p>
-                        <p style={{ color: "rgb(120,124,120)" }}>
-                          {item.published_at}
+                          className="paragraphInThumb"
+                        >
+                          {item.channel.name}
                         </p>
+                        <div className="count paragraphInThumb">
+                          <p
+                            style={{ color: "rgb(120,124,120)" }}
+                          >{`${item.view_count} Views`}</p>
+                          <p style={{ color: "rgb(120,124,120)" }}>
+                            {item.published_at}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </a>
-              ))
-            ) : (
-              <p>No videos found</p>
-            )}
-          </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="VideosNotFound">
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+                alt="thumbnail_url"
+                className="NotFound"
+              />
+
+              <div>
+                <h3>No Search results found</h3>
+              </div>
+              <div>
+                <h1 className="heading">
+                  Try different keywords or remove search.
+                </h1>
+              </div>
+              <button className="retry" onClick={this.handleSubmit}>
+                Retry
+              </button>
+            </div>
+          )}
         </div>
       </>
     );

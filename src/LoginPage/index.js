@@ -1,8 +1,10 @@
 import "./index.css";
 import Cookies from "js-cookie";
 import React from "react";
+import ConfigurationContext from "../context";
 
 class LoginPage extends React.Component {
+  static contextType = ConfigurationContext;
   constructor(props) {
     super(props);
 
@@ -58,7 +60,7 @@ class LoginPage extends React.Component {
       const data = await response.json();
       const token = data.jwt_token;
       console.log(token);
-      Cookies.set("jwt_token", token, { expires: 30 });
+      Cookies.set("jwt_token", token, { expires: 0.1 });
 
       console.log("Login successful! Token stored.");
 
@@ -78,11 +80,19 @@ class LoginPage extends React.Component {
         <div className="nxwLogin">
           <div className="loginField">
             <div className="logoImageCon">
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                alt="logo"
-                className="logoImage"
-              />
+              {!this.context.mode ? (
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                  alt="logo"
+                  className="logoImage"
+                />
+              ) : (
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
+                  alt="logo"
+                  className="logoImage"
+                />
+              )}
             </div>
             <div className="loginInputFildsBtn">
               <div className="inputsWithbtn">
@@ -117,6 +127,7 @@ class LoginPage extends React.Component {
                   type="button"
                   className="loginButton"
                   onClick={this.handleSubmit}
+                  style={{ cursor: "pointer" }}
                 >
                   Login
                 </button>

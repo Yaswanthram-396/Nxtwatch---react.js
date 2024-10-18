@@ -52,6 +52,7 @@
         cursor: pointer;
     }
     .Videos{
+        width: 100%;
         display: grid;
         grid-template-columns: auto auto auto;
         @media (max-width:770px) {
@@ -119,5 +120,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50%;
+
+    height: 50vh;
   }
+  .NotFound {
+    width: 40%;
+    margin: 20px;
+}
+.VideosNotFound{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 50vh;
+    justify-content: center;
+    align-items: center;
+
+}

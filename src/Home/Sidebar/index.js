@@ -3,43 +3,111 @@ import { FaHome, FaGamepad, FaFire } from "react-icons/fa";
 import { MdVideoLibrary } from "react-icons/md";
 import { Link } from "react-router-dom";
 import ConfigurationContext from "../../context";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 function SidePanel({ Num }) {
-  const { mode } = useContext(ConfigurationContext);
-  const darkMode = {
-    color: "white",
-  };
-  const light = {
-    color: "black",
-  };
+  const { mode, handlePage, pagein } = useContext(ConfigurationContext);
+  const darkMode = { color: "white" };
+  const light = { color: "black" };
+  const location = useLocation();
+
+  // useEffect(() => {
+  //   const savedPage = localStorage.getItem("pagein");
+  //   if (savedPage) {
+  //     handlePage(savedPage);
+  //   }
+  // }, [handlePage]);
+  useEffect(() => {
+    const currentPath = location;
+    const num = currentPath.pathname.split("/").pop();
+    handlePage(num);
+  }, []);
+
   return (
     <div className="contentWithPanel">
       <div className="sidePanel">
         <div className="sidePanelOptionsContainer">
-          <div className="sidePanelOptions">
-            <FaHome title="Home Icon" />
-            <Link to="/NxtWatch/Home">
-              <p style={mode ? darkMode : light}>Home</p>
-            </Link>
-          </div>
-          <Link to="/NxtWatch/Trending">
-            <div className="sidePanelOptions">
-              <FaFire title="Trending Icon" />
-              <p style={mode ? darkMode : light}>Trending</p>
+          <Link to="/NxtWatch/Home">
+            <div
+              className={`sidePanelOptions ${
+                pagein === "Home" ? (mode ? "Clicked" : "lightClick") : null
+              }`}
+              onClick={() => handlePage("Home")}
+            >
+              <FaHome
+                title="Home Icon"
+                className={
+                  pagein === "Home"
+                    ? "iconStyle"
+                    : !mode
+                    ? "DarkIcon"
+                    : "whiteIcon"
+                }
+              />
+              <h4 style={mode ? darkMode : light}>Home</h4>
             </div>
           </Link>
-          <div className="sidePanelOptions">
-            <FaGamepad title="Gaming Icon" />
-            <Link to="/NxtWatch/Gaming">
-              <p style={mode ? darkMode : light}>Gaming</p>
-            </Link>
-          </div>
-          <div className="sidePanelOptions">
-            <MdVideoLibrary title="Saved Videos Icon" />
-            <Link to="/NxtWatch/Saved">
-              <p style={mode ? darkMode : light}> Saved videos</p>
-            </Link>
-          </div>
+          <Link to="/NxtWatch/Trending">
+            <div
+              className={`sidePanelOptions ${
+                pagein === "Trending" ? (mode ? "Clicked" : "lightClick") : null
+              }`}
+              onClick={() => handlePage("Trending")}
+            >
+              <FaFire
+                title="Trending Icon"
+                className={
+                  pagein === "Trending"
+                    ? "iconStyle"
+                    : !mode
+                    ? "DarkIcon"
+                    : "whiteIcon"
+                }
+              />
+              <h4 style={mode ? darkMode : light}>Trending</h4>
+            </div>
+          </Link>
+          <Link to="/NxtWatch/Gaming">
+            <div
+              className={`sidePanelOptions ${
+                pagein === "Gaming" ? (mode ? "Clicked" : "lightClick") : null
+              }`}
+              onClick={() => handlePage("Gaming")}
+            >
+              <FaGamepad
+                title="Gaming Icon"
+                className={
+                  pagein === "Gaming"
+                    ? "iconStyle"
+                    : !mode
+                    ? "DarkIcon"
+                    : "whiteIcon"
+                }
+              />
+              <h4 style={mode ? darkMode : light}>Gaming</h4>
+            </div>
+          </Link>
+          <Link to="/NxtWatch/Saved">
+            <div
+              className={`sidePanelOptions ${
+                pagein === "Saved" ? (mode ? "Clicked" : "lightClick") : null
+              }`}
+              onClick={() => handlePage("Saved")}
+            >
+              <MdVideoLibrary
+                title="Saved Videos Icon"
+                className={
+                  pagein === "Saved"
+                    ? "iconStyle"
+                    : !mode
+                    ? "DarkIcon"
+                    : "whiteIcon"
+                }
+              />
+              <h4 style={mode ? darkMode : light}>Saved videos</h4>
+            </div>
+          </Link>
         </div>
         <div className="sidePanelFooter">
           <h2 style={mode ? darkMode : light}>CONTACT US</h2>
