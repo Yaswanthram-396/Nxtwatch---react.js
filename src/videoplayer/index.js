@@ -41,13 +41,13 @@ export default function VideoPlayer() {
       const updatedDislikeList = disLikeList.filter((item) => item.id !== num);
       setDisLikeList(updatedDislikeList);
       localStorage.setItem("dislikeList", JSON.stringify(updatedDislikeList));
+      setDislike(false);
     } else {
       const updatedDislikeList = [...disLikeList, allData];
       setDisLikeList(updatedDislikeList);
       localStorage.setItem("dislikeList", JSON.stringify(updatedDislikeList));
       setDislike(true);
 
-      // Remove from like list if it exists
       const updatedLikeList = likeList.filter((item) => item.id !== num);
       setLikeList(updatedLikeList);
       localStorage.setItem("likeList", JSON.stringify(updatedLikeList));
@@ -63,13 +63,13 @@ export default function VideoPlayer() {
       const updatedLikeList = likeList.filter((item) => item.id !== num);
       setLikeList(updatedLikeList);
       localStorage.setItem("likeList", JSON.stringify(updatedLikeList));
+      setLiked(false);
     } else {
       const updatedLikeList = [...likeList, allData];
       setLikeList(updatedLikeList);
       localStorage.setItem("likeList", JSON.stringify(updatedLikeList));
       setLiked(true);
 
-      // Remove from dislike list if it exists
       const updatedDislikeList = disLikeList.filter((item) => item.id !== num);
       setDisLikeList(updatedDislikeList);
       localStorage.setItem("dislikeList", JSON.stringify(updatedDislikeList));
