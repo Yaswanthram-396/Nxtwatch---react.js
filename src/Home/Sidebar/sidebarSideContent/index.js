@@ -37,10 +37,17 @@ class VideosInHome extends React.Component {
                 alt="logo"
                 className="logoNavbar"
               />
-              <p>Buy Nxt Watch Premium prepaid plans with UPI</p>
+              <p style={{ color: "#000" }}>
+                Buy Nxt Watch Premium prepaid plans with UPI
+              </p>
               <button className="AdBtn">GET IT NOW</button>
             </div>
-            <FaTimes className="closeIcon" onClick={this.handleCloseBanner} />
+
+            <FaTimes
+              className="closeIcon"
+              style={{ color: "#000" }}
+              onClick={this.handleCloseBanner}
+            />
           </div>
         </div>
         <GetApiRes />

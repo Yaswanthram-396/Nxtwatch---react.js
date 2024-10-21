@@ -2,6 +2,7 @@
     background-image: url(https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png);
     background-size: cover;
     /* width: 80vw; */
+    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

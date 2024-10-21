@@ -2,13 +2,13 @@ import "./index.css";
 import { FaMoon, FaSun } from "react-icons/fa";
 import ConfigurationContext from "../../context";
 import { useContext, useEffect, useState } from "react";
-import { width } from "@fortawesome/free-solid-svg-icons/fa0";
 import { useNavigate } from "react-router-dom"; // Assuming you're using react-router-dom
-
+import { Panel } from "../Sidebar";
 import Cookies from "js-cookie";
+import { FaBars, FaSignOutAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const Navbar = () => {
-  const { savedList, mode, handleSavedList, handleMode } =
-    useContext(ConfigurationContext);
+  const { mode, handleMode } = useContext(ConfigurationContext);
   const [showpop, setpop] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
@@ -21,11 +21,24 @@ const Navbar = () => {
     Cookies.remove("jwt_token");
     navigate("/");
   };
+  const [stile, setStile] = useState({ display: "none" });
+
+  const handleProfile = () => {
+    setStile({
+      display: "block",
+      position: "absolute",
+      zIndex: 2,
+      top: "0",
+      left: "0",
+      backgroundColor: !mode ? "#fff" : "#000",
+    });
+  };
   return (
     <>
       {showpop ? (
         <div className="entirePop">
           <div
+          
             className="poper"
             style={{
               position: "fixed",
@@ -39,7 +52,7 @@ const Navbar = () => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "#fff",
+              backgroundColor: !mode ? "#fff" : "rgb(33,33,33)",
               borderRadius: "10px",
             }}
           >
@@ -56,19 +69,22 @@ const Navbar = () => {
         </div>
       ) : null}
       <nav>
-        {!mode ? (
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-            alt="logo"
-            className="logoNavbar"
-          />
-        ) : (
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
-            alt="logo"
-            className="logoNavbar"
-          />
-        )}
+        <Link to="/NxtWatch/Home">
+          {!mode ? (
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+              alt="logo"
+              className="logoNavbar"
+            />
+          ) : (
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
+              alt="logo"
+              className="logoNavbar"
+            />
+          )}
+        </Link>
+        <Panel props={stile} setting={setStile} />
         <div className="navbarList">
           <li onClick={handleSet}>
             {mode ? (
@@ -83,6 +99,11 @@ const Navbar = () => {
               alt="logo"
               className="poffile"
             />
+            <FaBars
+              className="logoutSVG"
+              style={{ fontSize: "24px" }}
+              onClick={handleProfile}
+            />
           </li>
           <button
             className={`logoutBtn ${mode ? "num" : null}`}
@@ -90,6 +111,12 @@ const Navbar = () => {
           >
             Log out
           </button>
+          <FaSignOutAlt
+            className="logoutSVG"
+            style={{ fontSize: "24px" }}
+            title="logout"
+            onClick={() => setpop(true)}
+          />
         </div>
       </nav>
     </>

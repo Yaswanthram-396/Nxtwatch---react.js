@@ -15,6 +15,12 @@ div{
     justify-content: space-between;
     /* align-items: center; */
     box-shadow: 0px 0px 25px #f1f1f1;
+    @media (max-width:600px) {
+      width: 56%;
+    }
+    @media (min-width:601px) and (max-width:600px) {
+      width: 56%;
+    }
   }
   .nxwLogin {
       display: flex;

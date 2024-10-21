@@ -8,6 +8,8 @@
     align-items: center;
     background-color: #FAF9F7;
     justify-content: center;
+    height: 91vh;
+    width: 80%;
 }
 .non {
     width: 40%;

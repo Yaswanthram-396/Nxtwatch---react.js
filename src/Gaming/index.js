@@ -74,10 +74,7 @@ export default function Gaming() {
               {console.log(mode)}
               {allData.map((item) => (
                 <Link to={`/video/${item.id}`}>
-                  <div
-                    className="BG-container-gaming"
-                    style={{ height: "auto" }}
-                  >
+                  <div className="BG-container-gaming">
                     <img
                       src={item.thumbnail_url}
                       alt="thumbnail_url"

@@ -1,10 +1,8 @@
 import { MdVideoLibrary } from "react-icons/md";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import "./index.css";
-import { ThreeDots } from "react-loader-spinner";
-import Cookies from "js-cookie";
+
 import React from "react";
-import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import ConfigurationContext from "../context";
 export default function Saved() {
@@ -77,15 +75,17 @@ export default function Saved() {
             !mode ? { backgroundColor: "#FAF9F7" } : { backgroundColor: "#000" }
           }
         >
-          <div className="non">
-            <img
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png "
-              alt="No savied videos"
-              className="noSaved"
-            />
+          <div>
+            <div className="non">
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png "
+                alt="No savied videos"
+                className="noSaved"
+              />
+            </div>
+            <h2>No saved videos found</h2>
+            <p>You can save your videos while watching them.</p>
           </div>
-          <h2>No saved videos found</h2>
-          <p>You can save your videos while watching them.</p>
         </div>
       )}
     </>

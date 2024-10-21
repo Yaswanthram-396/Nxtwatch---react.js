@@ -13,27 +13,6 @@ import Cookies from "js-cookie";
 
 export default function App() {
   const navigate = useNavigate();
-  // const [like, setLikeList] = useState(() => {
-  //   const savedItems = localStorage.getItem("likeList");
-  //   try {
-  //     return savedItems ? JSON.parse(savedItems) : [];
-  //   } catch (e) {
-  //     console.error("Error parsing likeList:", e);
-  //     return [];
-  //   }
-  // });
-  // const [like, setLikeList] = useState(() => {
-  //   const savedItems = localStorage.getItem("like");
-  //   try {
-  //     return savedItems ? JSON.parse(savedItems) : [];
-  //   } catch (e) {
-  //     console.error("Error parsing savedList:", e);
-  //     return [];
-  //   }
-  // });
-
-  const [disLike, setDisLikeList] = useState([]);
-
   const [savedList, setSavedList] = useState(() => {
     const savedItems = localStorage.getItem("savedList");
     try {
