@@ -75,7 +75,7 @@ export default function Saved() {
             !mode ? { backgroundColor: "#FAF9F7" } : { backgroundColor: "#000" }
           }
         >
-          <div>
+          <div style={{ display: "contents" }}>
             <div className="non">
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png "
